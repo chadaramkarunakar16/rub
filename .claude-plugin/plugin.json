@@ -1,0 +1,11 @@
+{
+  "name": "rub",
+  "displayName": "RUB: Research, Understand, Build",
+  "version": "0.2.0",
+  "description": "Research a startup or product from public sources, understand its business and technology as an HTML case study, then get a learn plan and a build plan with step-by-step vibe-coding prompts to make your own version.",
+  "author": {
+    "name": "Chadaram Karunakar"
+  },
+  "license": "MIT",
+  "keywords": ["research", "startups", "case-study", "learning", "vibe-coding", "build-plan", "market-analysis"]
+}

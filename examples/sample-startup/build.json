@@ -1,0 +1,313 @@
+{
+  "product": "Sampleo",
+  "sample": true,
+  "summary": "A mobile-first app where a field rep records a voice note after a visit and it becomes a structured CRM record.",
+  "scope": {
+    "in": [
+      "Record voice note",
+      "Transcribe",
+      "Extract fields",
+      "Show, edit and confirm the record"
+    ],
+    "out": [
+      "Manager daily digest (phase 2)",
+      "Offline capture (phase 3)",
+      "Real CRM integrations (use CSV export first)",
+      "Team admin"
+    ]
+  },
+  "stack": {
+    "frontend": {
+      "choice": "Next.js (responsive web app / PWA)",
+      "why": "One codebase, easy to deploy, works on phones",
+      "alternatives": "React Native, Flutter"
+    },
+    "backend": {
+      "choice": "FastAPI (Python)",
+      "why": "Quick to write, good for AI calls",
+      "alternatives": "Node + Express"
+    },
+    "database": {
+      "choice": "PostgreSQL (Supabase)",
+      "why": "Relational data, free tier",
+      "alternatives": "SQLite, Firebase"
+    },
+    "auth": {
+      "choice": "Supabase Auth",
+      "why": "Email login in an hour",
+      "alternatives": "Clerk, Auth.js"
+    },
+    "ai": {
+      "choice": "Speech-to-text API + LLM with JSON output",
+      "why": "No model hosting needed",
+      "alternatives": "Open-source Whisper"
+    },
+    "hosting": {
+      "choice": "Vercel + Render",
+      "why": "Free tiers",
+      "alternatives": "Fly.io"
+    }
+  },
+  "architecture": {
+    "components": [
+      {
+        "name": "Web app",
+        "role": "Recording UI, record list, edit screen"
+      },
+      {
+        "name": "API",
+        "role": "Auth, upload, orchestration, storage"
+      },
+      {
+        "name": "AI worker",
+        "role": "Transcribe and extract fields"
+      }
+    ],
+    "flows": [
+      {
+        "name": "Voice note to record",
+        "steps": [
+          "Rep taps record and speaks",
+          "App uploads audio to API",
+          "API stores audio and queues a job",
+          "Worker transcribes the audio",
+          "Worker extracts fields as JSON",
+          "API saves the record",
+          "App shows the record for review"
+        ]
+      }
+    ]
+  },
+  "data_model": [
+    {
+      "entity": "users",
+      "fields": [
+        "id",
+        "email",
+        "team_id"
+      ],
+      "notes": "From auth"
+    },
+    {
+      "entity": "visits",
+      "fields": [
+        "id",
+        "user_id",
+        "customer_name",
+        "audio_url",
+        "transcript",
+        "created_at"
+      ],
+      "notes": ""
+    },
+    {
+      "entity": "records",
+      "fields": [
+        "id",
+        "visit_id",
+        "fields_json",
+        "status"
+      ],
+      "notes": "status: draft or confirmed"
+    }
+  ],
+  "api": [
+    {
+      "method": "POST",
+      "path": "/visits",
+      "purpose": "Upload audio and create a visit"
+    },
+    {
+      "method": "GET",
+      "path": "/visits",
+      "purpose": "List my visits"
+    },
+    {
+      "method": "PATCH",
+      "path": "/records/{id}",
+      "purpose": "Edit and confirm a record"
+    }
+  ],
+  "phases": [
+    {
+      "id": "p1",
+      "kind": "mvp",
+      "name": "Voice note to a confirmed record",
+      "goal": "One rep can record a visit, get a structured record, fix it and confirm it",
+      "user_value": "Saves the rep about an hour a day of typing",
+      "exit_criteria": [
+        "5 real reps use it on real visits for a week",
+        "At least 8 of 10 records need one edit or fewer",
+        "Capture takes under 2 minutes end to end",
+        "Cost per visit is logged and within your budget"
+      ],
+      "stages": [
+        {
+          "id": "p1s1",
+          "name": "Project skeleton and auth",
+          "goal": "Running app with login",
+          "hours": 4,
+          "deliverable": "Login page and an empty dashboard, deployed",
+          "prompt": "Create a Next.js app with Supabase email authentication. Add a protected /dashboard page that shows the signed-in user's email. Use TypeScript and a clean, mobile-first layout. Explain each file you create in one line. Stop when the acceptance checks pass.",
+          "acceptance": [
+            "I can sign up, sign in and sign out",
+            "Dashboard is unreachable when signed out"
+          ],
+          "learn_first": [
+            "HTTP and REST"
+          ]
+        },
+        {
+          "id": "p1s2",
+          "name": "Database and visits API",
+          "goal": "Create and list visits",
+          "hours": 5,
+          "deliverable": "visits table and two endpoints",
+          "prompt": "Add the visits and records tables from the data model using migrations. Build POST /visits and GET /visits in FastAPI, checking the signed-in user. Add tests for both endpoints. Stop when the acceptance checks pass.",
+          "acceptance": [
+            "A visit created by user A is not visible to user B",
+            "Tests pass"
+          ],
+          "learn_first": [
+            "SQL and a database"
+          ]
+        },
+        {
+          "id": "p1s3",
+          "name": "Record and upload audio",
+          "goal": "Record in the browser and upload",
+          "hours": 5,
+          "deliverable": "Record button, upload progress, saved audio",
+          "prompt": "Add a record screen that captures microphone audio with the MediaRecorder API, shows a timer, and uploads the file to POST /visits. Handle denied microphone permission with a clear message. Stop when the acceptance checks pass.",
+          "acceptance": [
+            "Audio plays back from storage",
+            "Permission denied shows a helpful message"
+          ],
+          "learn_first": []
+        },
+        {
+          "id": "p1s4",
+          "name": "Transcribe and extract",
+          "goal": "Turn audio into structured fields",
+          "hours": 6,
+          "deliverable": "Worker that fills records.fields_json",
+          "prompt": "Add a background job that transcribes a visit's audio with a speech-to-text API and then calls an LLM to extract customer, outcome, next step and follow-up date as JSON matching a fixed schema. Validate the JSON and retry once on failure. Log the cost per visit. Stop when the acceptance checks pass.",
+          "acceptance": [
+            "20 sample recordings produce valid JSON at least 90% of the time",
+            "Failures are visible in the UI"
+          ],
+          "learn_first": [
+            "Calling a speech-to-text API",
+            "Prompting for JSON output"
+          ]
+        },
+        {
+          "id": "p1s5",
+          "name": "Review and confirm",
+          "goal": "Let the rep fix and approve a record",
+          "hours": 4,
+          "deliverable": "Edit screen with a Confirm button",
+          "prompt": "Build a review screen that shows the extracted fields with inline editing and a Confirm button that sets the record status to confirmed. Confirmed records must not change silently. Keep the UI minimal. Stop when the acceptance checks pass.",
+          "acceptance": [
+            "Confirmed records are locked until the rep re-opens them",
+            "Edits are saved and shown after a refresh"
+          ],
+          "learn_first": []
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "feature",
+      "name": "Manager daily digest",
+      "feature": "Manager daily digest",
+      "goal": "A manager gets one summary of yesterday's confirmed visits",
+      "why_next": "The manager is the buyer, and the digest gives them a reason to pay; the cheap note apps in the case study do not offer it",
+      "user_value": "Managers see the field without chasing reps",
+      "exit_criteria": [
+        "3 managers open the digest 3 days in a row",
+        "Digest generation cost per team is under your budget"
+      ],
+      "stages": [
+        {
+          "id": "p2s1",
+          "name": "Teams and roles",
+          "goal": "Group reps under a manager",
+          "hours": 3,
+          "deliverable": "teams table, manager role and an invite step",
+          "prompt": "Add a teams table and a manager role to the existing app. A manager can see confirmed records of reps on their team and nobody else's. Do not change the rep screens. Add tests for the permission rule. Stop when the acceptance checks pass.",
+          "acceptance": [
+            "A manager sees only their team's confirmed records",
+            "Reps still see only their own visits"
+          ],
+          "learn_first": []
+        },
+        {
+          "id": "p2s2",
+          "name": "Digest job and email",
+          "goal": "Send the daily summary",
+          "hours": 4,
+          "deliverable": "Scheduled job that emails a summary per team",
+          "prompt": "Add a scheduled job that, each morning, summarises yesterday's confirmed records for each team (counts, outcomes, follow-ups due) and emails it to the manager. Keep the summary template in one file. Add an unsubscribe link. Stop when the acceptance checks pass.",
+          "acceptance": [
+            "Digest lists yesterday's confirmed visits",
+            "Unsubscribe works"
+          ],
+          "learn_first": []
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "kind": "feature",
+      "name": "Offline capture",
+      "feature": "Offline capture",
+      "goal": "A rep can record with no signal and have it upload later",
+      "why_next": "White space in the case study: neither of the main competitors works offline, and field reps often have poor signal",
+      "user_value": "Reps in poor-signal areas can use the product at all",
+      "exit_criteria": [
+        "A recording made in airplane mode uploads after reconnecting with nothing lost",
+        "3 reps in poor-signal areas use it for a week"
+      ],
+      "stages": [
+        {
+          "id": "p3s1",
+          "name": "Local queue",
+          "goal": "Store recordings on the device when offline",
+          "hours": 5,
+          "deliverable": "Service worker and a local queue of pending recordings",
+          "prompt": "Make the web app installable (PWA) and add a service worker. When the upload fails because the device is offline, store the recording in IndexedDB and show it as 'waiting to upload'. Do not change the online flow. Stop when the acceptance checks pass.",
+          "acceptance": [
+            "An offline recording appears as waiting",
+            "The online flow still works"
+          ],
+          "learn_first": []
+        },
+        {
+          "id": "p3s2",
+          "name": "Sync and retries",
+          "goal": "Upload the queue when back online",
+          "hours": 5,
+          "deliverable": "Automatic sync with retry and no duplicates",
+          "prompt": "When the connection returns, upload queued recordings one at a time with retry and exponential backoff. Use a client-generated id so a retried upload never creates a duplicate visit. Show sync status per recording. Add tests for the duplicate rule. Stop when the acceptance checks pass.",
+          "acceptance": [
+            "Interrupting a sync and retrying creates no duplicate visits",
+            "Status shows waiting, uploading, done or failed"
+          ],
+          "learn_first": []
+        }
+      ]
+    }
+  ],
+  "launch_checklist": [
+    "Privacy note explaining audio storage and deletion",
+    "Rate limits on uploads",
+    "Error monitoring",
+    "5 real users testing for a week"
+  ],
+  "risks": [
+    "Speech accuracy on accents and noise",
+    "LLM cost per recording",
+    "Storing voice data needs consent and a deletion option"
+  ]
+}

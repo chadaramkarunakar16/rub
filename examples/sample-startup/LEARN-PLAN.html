@@ -1,0 +1,57 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>Learn plan: Sampleo</title><style>
+:root{--bg:#f7f6f2;--fg:#1d2230;--mut:#5f6677;--card:#fff;--line:#e3e0d6;--acc:#245c43;--acc2:#e8f1ec;--warn:#9a5b00;--warnbg:#fff4e0;
+--bad:#a82a1c;--info:#1d5aa8;--infobg:#e6f0fb;--code:#f0efe9}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#13151a;--fg:#e7e5de;--mut:#9aa1b0;--card:#1b1e25;--line:#2c313b;--acc:#7ad1a0;--acc2:#1e2c25;
+--warn:#f0b35a;--warnbg:#2b2417;--bad:#ff8a7a;--info:#8bb8f0;--infobg:#1b2636;--code:#22262e}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,-apple-system,"Segoe UI",sans-serif}
+a{color:var(--acc)}.wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+header.hero{padding:34px 0 22px;border-bottom:1px solid var(--line)}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+h1{margin:6px 0 4px;font-size:clamp(28px,5vw,42px);line-height:1.1}
+.tag{color:var(--mut);margin:0 0 14px;font-size:18px}
+.banner{background:var(--warnbg);color:var(--warn);border:1px solid var(--warn);border-radius:10px;padding:8px 12px;margin:12px 0;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px}
+.stat small{display:block;color:var(--mut);font-size:12px;text-transform:uppercase;letter-spacing:.05em}
+.stat b{display:block;font-size:17px;line-height:1.3;margin-top:2px}
+nav.toc{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap}
+nav.toc a{display:inline-block;padding:10px 12px;text-decoration:none;font-size:14px;color:var(--mut)}
+nav.toc a:hover{color:var(--acc)}
+section{padding:26px 0 6px;scroll-margin-top:48px}section h2{font-size:22px;margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.card h3{margin:0 0 4px;font-size:17px}.card p{margin:6px 0}.mut{color:var(--mut)}
+.badge{display:inline-block;font-size:11px;padding:1px 8px;border-radius:999px;border:1px solid var(--line);margin-left:6px;vertical-align:middle;color:var(--mut)}
+.badge.confirmed{color:var(--acc);border-color:var(--acc);background:var(--acc2)}
+.badge.reported,.badge.typical{color:var(--info);border-color:var(--info);background:var(--infobg)}
+.badge.estimate{color:var(--warn);border-color:var(--warn);background:var(--warnbg)}
+sup a{text-decoration:none;font-size:11px}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--mut);font-weight:600;font-size:13px}
+ul.clean{margin:0;padding-left:20px}.good li::marker{color:var(--acc)}.cons li::marker{color:var(--bad)}
+.tl{border-left:2px solid var(--line);margin-left:6px;padding-left:16px}.tl .it{margin:0 0 14px;position:relative}
+.tl .it:before{content:"";position:absolute;left:-23px;top:7px;width:10px;height:10px;border-radius:50%;background:var(--acc)}
+.tl b{display:block}
+pre.prompt{white-space:pre-wrap;background:var(--code);border:1px solid var(--line);border-radius:10px;padding:12px;font:13.5px/1.5 ui-monospace,Menlo,Consolas,monospace;margin:8px 0}
+button{font:inherit;font-size:13px;padding:5px 12px;border-radius:8px;border:1px solid var(--acc);background:var(--acc2);color:var(--acc);cursor:pointer}
+label.chk{display:flex;gap:8px;align-items:flex-start;margin:4px 0}
+.prog{height:8px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}.prog i{display:block;height:100%;width:0;background:var(--acc);transition:width .3s}
+.flow{counter-reset:s;list-style:none;padding:0;margin:0}.flow li{counter-increment:s;padding:6px 0 6px 34px;position:relative}
+.flow li:before{content:counter(s);position:absolute;left:0;top:6px;width:24px;height:24px;border-radius:50%;background:var(--acc2);color:var(--acc);font-size:13px;display:grid;place-items:center}
+footer{margin:40px 0;padding-top:16px;border-top:1px solid var(--line);color:var(--mut);font-size:13px}
+.src li{word-break:break-all;font-size:13px}
+@media print{nav.toc,button{display:none}body{background:#fff}}
+</style></head><body data-key="learn-sampleo"><header class=hero><div class=wrap><div class=eyebrow>Learn plan &middot; some-coding</div><h1>Learn to build Sampleo</h1><p class=tag>Build a voice-to-CRM mobile app by hand, without AI writing the code</p><div class=stats><div class=stat><small>Weeks</small><b>2</b></div><div class=stat><small>Total hours</small><b>18</b></div><div class=stat><small>Pace</small><b>10 h / week</b></div></div><div class=prog><i id=prog></i></div><div class=mut id=plabel></div><div class="banner"><b>Sample.</b> This page uses a fictional company to show the format. Facts here are not real.</div></div></header><nav class=toc><div class=wrap><a href="#w1">Week 1</a><a href="#w2">Week 2</a><a href="#concepts">Key terms</a><a href="#skip">Skip for now</a></div></nav><main class=wrap><section id="w1"><h2>Week 1: Web and API basics</h2><div class=grid><div class=card><label class=chk><input type=checkbox data-id="w1-0"><span><b>HTTP and REST</b> <span class=badge>4 h</span></span></label><p><b>Why you need it:</b> Your app and server talk this way.</p><p><b>Practice:</b> Build a notes API with create and list endpoints.</p><ul class=clean><li><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview" rel="noopener noreferrer" target="_blank">MDN: An overview of HTTP</a><span class=badge>docs</span></li></ul></div><div class=card><label class=chk><input type=checkbox data-id="w1-1"><span><b>SQL and a database</b> <span class=badge>5 h</span></span></label><p><b>Why you need it:</b> Visits and notes need durable storage.</p><p><b>Practice:</b> Create tables for users, visits and notes; write 5 queries.</p><ul class=clean><li><a href="https://www.sqlite.org/lang.html" rel="noopener noreferrer" target="_blank">SQLite tutorial</a><span class=badge>docs</span></li></ul></div></div><p><b>Milestone:</b> A small API that stores and returns notes</p></section><section id="w2"><h2>Week 2: Voice and AI extraction</h2><div class=grid><div class=card><label class=chk><input type=checkbox data-id="w2-0"><span><b>Calling a speech-to-text API</b> <span class=badge>4 h</span></span></label><p><b>Why you need it:</b> Turns the rep&#x27;s voice into text.</p><p><b>Practice:</b> Transcribe three recordings and compare accuracy.</p><ul class=clean><li><a href="https://example.com/stt-docs" rel="noopener noreferrer" target="_blank">Provider docs of your choice</a><span class=badge>docs</span></li></ul></div><div class=card><label class=chk><input type=checkbox data-id="w2-1"><span><b>Prompting for JSON output</b> <span class=badge>5 h</span></span></label><p><b>Why you need it:</b> Converts text into CRM fields reliably.</p><p><b>Practice:</b> Extract 6 fields from 20 sample transcripts and measure errors.</p><ul class=clean><li><a href="https://example.com/structured-output" rel="noopener noreferrer" target="_blank">Structured output guide</a><span class=badge>article</span></li></ul></div></div><p><b>Milestone:</b> Audio in, structured record out</p></section><section id="concepts"><h2>Key terms</h2><div class="tw"><table><tr><th>Term<th>In plain words</tr><tr><td>Structured extraction<td>Asking a language model to return data in a fixed shape (like a form) instead of free text.</tr></table></div></section><section id="skip"><h2>Skip for now</h2><p class=mut>You do not need these to ship the first version.</p><ul class="clean "><li>Kubernetes</li><li>Microservices</li><li>Custom speech models</li></ul></section></main><footer class=wrap>Made with RUB (Research, Understand, Build) from public sources on 2026-10-16. Facts carry a confidence label and sources; verify anything important before you rely on it.</footer><script>
+const K=document.body.dataset.key||'rub';
+function load(){try{return JSON.parse(localStorage.getItem(K)||'{}')}catch(e){return{}}}
+function save(o){try{localStorage.setItem(K,JSON.stringify(o))}catch(e){}}
+function sync(){const o=load();let n=0,t=0;document.querySelectorAll('input[data-id]').forEach(c=>{c.checked=!!o[c.dataset.id];t++;if(c.checked)n++});
+ const p=document.getElementById('prog');if(p){p.style.width=(t?n*100/t:0)+'%';const l=document.getElementById('plabel');if(l)l.textContent=n+' of '+t+' done'}}
+document.addEventListener('change',e=>{const c=e.target;if(c.dataset&&c.dataset.id){const o=load();o[c.dataset.id]=c.checked;save(o);sync()}});
+document.addEventListener('click',e=>{const b=e.target.closest('button[data-copy]');if(!b)return;const t=document.getElementById(b.dataset.copy).innerText;
+ const done=()=>{const x=b.textContent;b.textContent='Copied';setTimeout(()=>b.textContent=x,1400)};
+ if(navigator.clipboard){navigator.clipboard.writeText(t).then(done,()=>{})}else{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(_){}a.remove()}});
+sync();
+</script></body></html>

@@ -1,0 +1,86 @@
+{
+  "product": "Sampleo",
+  "sample": true,
+  "goal": "Build a voice-to-CRM mobile app by hand, without AI writing the code",
+  "level": "some-coding",
+  "hours_per_week": 10,
+  "concepts": [
+    {
+      "term": "Structured extraction",
+      "plain": "Asking a language model to return data in a fixed shape (like a form) instead of free text."
+    }
+  ],
+  "weeks": [
+    {
+      "week": 1,
+      "theme": "Web and API basics",
+      "milestone": "A small API that stores and returns notes",
+      "topics": [
+        {
+          "topic": "HTTP and REST",
+          "why": "Your app and server talk this way.",
+          "hours": 4,
+          "exercise": "Build a notes API with create and list endpoints.",
+          "resources": [
+            {
+              "title": "MDN: An overview of HTTP",
+              "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview",
+              "kind": "docs"
+            }
+          ]
+        },
+        {
+          "topic": "SQL and a database",
+          "why": "Visits and notes need durable storage.",
+          "hours": 5,
+          "exercise": "Create tables for users, visits and notes; write 5 queries.",
+          "resources": [
+            {
+              "title": "SQLite tutorial",
+              "url": "https://www.sqlite.org/lang.html",
+              "kind": "docs"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "theme": "Voice and AI extraction",
+      "milestone": "Audio in, structured record out",
+      "topics": [
+        {
+          "topic": "Calling a speech-to-text API",
+          "why": "Turns the rep's voice into text.",
+          "hours": 4,
+          "exercise": "Transcribe three recordings and compare accuracy.",
+          "resources": [
+            {
+              "title": "Provider docs of your choice",
+              "url": "https://example.com/stt-docs",
+              "kind": "docs"
+            }
+          ]
+        },
+        {
+          "topic": "Prompting for JSON output",
+          "why": "Converts text into CRM fields reliably.",
+          "hours": 5,
+          "exercise": "Extract 6 fields from 20 sample transcripts and measure errors.",
+          "resources": [
+            {
+              "title": "Structured output guide",
+              "url": "https://example.com/structured-output",
+              "kind": "article"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "skip_for_now": [
+    "Kubernetes",
+    "Microservices",
+    "Custom speech models"
+  ]
+}

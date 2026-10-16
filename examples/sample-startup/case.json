@@ -1,0 +1,322 @@
+{
+  "name": "Sampleo",
+  "sample": true,
+  "tagline": "FICTIONAL SAMPLE: AI notes for field sales teams",
+  "website": "https://example.com",
+  "as_of": "2026-10-16",
+  "snapshot": {
+    "founded": {
+      "value": "2024",
+      "confidence": "confirmed",
+      "sources": [
+        "https://example.com/about"
+      ]
+    },
+    "founders": {
+      "value": "Asha Rao (CEO), Daniel Kim (CTO)",
+      "confidence": "confirmed",
+      "sources": [
+        "https://example.com/about"
+      ]
+    },
+    "headquarters": {
+      "value": "Bengaluru, India",
+      "confidence": "confirmed",
+      "sources": [
+        "https://example.com/about"
+      ]
+    },
+    "category": {
+      "value": "Sales productivity / voice AI",
+      "confidence": "confirmed",
+      "sources": [
+        "https://example.com"
+      ]
+    },
+    "team_size": {
+      "value": "About 25",
+      "confidence": "reported",
+      "sources": [
+        "https://example.com/news/team"
+      ]
+    },
+    "stage": {
+      "value": "Seed",
+      "confidence": "confirmed",
+      "sources": [
+        "https://example.com/news/seed"
+      ]
+    }
+  },
+  "funding": {
+    "total_raised": {
+      "value": "$6.5M",
+      "confidence": "reported",
+      "sources": [
+        "https://example.com/news/seed"
+      ]
+    },
+    "valuation": {
+      "value": "Not publicly confirmed",
+      "confidence": "unknown",
+      "sources": []
+    },
+    "latest_round": {
+      "value": "Seed, Mar 2026",
+      "confidence": "confirmed",
+      "sources": [
+        "https://example.com/news/seed"
+      ]
+    },
+    "rounds": [
+      {
+        "round": "Seed",
+        "date": "2026-03",
+        "amount": "$6.5M",
+        "lead_investors": "Example Ventures",
+        "other_investors": "Angel investors from sales-tech",
+        "sources": [
+          "https://example.com/news/seed"
+        ]
+      }
+    ],
+    "why_funded": [
+      {
+        "point": "A painful, daily problem for a clear buyer: reps lose hours typing notes after visits",
+        "sources": [
+          "https://example.com/news/seed"
+        ]
+      },
+      {
+        "point": "Fast early traction: 400 paying teams within 9 months of launch",
+        "sources": [
+          "https://example.com/news/seed"
+        ]
+      }
+    ]
+  },
+  "problem": "Field sales reps spend about an hour a day writing up visits, so CRMs stay stale and managers fly blind.",
+  "solution": "Reps talk after a visit; the app turns the voice note into a structured CRM update and next-step reminders.",
+  "who_its_for": "Sales teams of 10-200 reps who visit customers in person (pharma, FMCG, building materials).",
+  "features": [
+    {
+      "name": "Voice-to-CRM update",
+      "what": "Speak for 30 seconds; get a filled CRM record.",
+      "why_it_matters": "Removes the task reps hate most, so adoption is high.",
+      "how_it_works": "Speech-to-text, then an LLM extracts fields into a fixed schema, then a CRM API write.",
+      "sources": [
+        "https://example.com/product"
+      ]
+    },
+    {
+      "name": "Manager digest",
+      "what": "A daily summary of every visit.",
+      "why_it_matters": "Gives the buyer (the manager) a reason to pay.",
+      "how_it_works": "Scheduled job summarises the day's structured records.",
+      "sources": [
+        "https://example.com/product"
+      ]
+    }
+  ],
+  "usp": [
+    {
+      "point": "Works offline in poor-signal areas",
+      "detail": "Records on device and syncs later, which general note apps do not do."
+    },
+    {
+      "point": "Regional-language voice",
+      "detail": "Supports 8 Indian languages with mixed-language speech."
+    }
+  ],
+  "business_model": {
+    "revenue": "Per-seat subscription, sold to the sales manager.",
+    "value_metric": "Active rep per month",
+    "pricing": [
+      {
+        "plan": "Team",
+        "price": "$18 / rep / month",
+        "notes": "Billed annually"
+      },
+      {
+        "plan": "Enterprise",
+        "price": "Custom",
+        "notes": "SSO, audit logs, CRM custom fields"
+      }
+    ],
+    "unit_economics_note": "Not public. Gross margin depends on speech and LLM cost per minute; see the build plan for cost control."
+  },
+  "market": {
+    "position": {
+      "value": "Challenger in a growing niche, behind the large CRM vendors' built-in assistants",
+      "confidence": "estimate",
+      "sources": [
+        "https://example.com/market-report"
+      ]
+    },
+    "why_leading": [
+      "Owns the offline, regional-language niche that big vendors ignore",
+      "Bottom-up adoption by reps, then a manager-led upgrade"
+    ],
+    "differentiation_summary": "Sampleo competes on offline use and regional languages; the big CRMs compete on distribution and bundling, and note apps compete on price.",
+    "competitors": [
+      {
+        "name": "BigCRM Assistant",
+        "website": "https://example.com/bigcrm",
+        "angle": "distribution",
+        "what_they_do": "AI assistant built into the largest CRM.",
+        "how_they_differentiate": "Already installed for every customer of the CRM, so adoption costs nothing.",
+        "pricing": "Bundled in the CRM's top plan",
+        "traction": "Offered to millions of CRM seats (company statement)",
+        "strengths": [
+          "Zero setup",
+          "Data already in the CRM"
+        ],
+        "weaknesses": [
+          "Needs a connection",
+          "Few languages"
+        ],
+        "sources": [
+          "https://example.com/bigcrm/assistant"
+        ]
+      },
+      {
+        "name": "GenericNotes",
+        "website": "https://example.com/genericnotes",
+        "angle": "price",
+        "what_they_do": "General voice-notes app.",
+        "how_they_differentiate": "Cheap and simple for any profession.",
+        "pricing": "$4 / user / month",
+        "traction": "Not publicly confirmed",
+        "strengths": [
+          "Low price",
+          "Easy to try"
+        ],
+        "weaknesses": [
+          "Free-text output, not CRM fields"
+        ],
+        "sources": [
+          "https://example.com/genericnotes/pricing"
+        ]
+      },
+      {
+        "name": "VoiceForms",
+        "website": "https://example.com/voiceforms",
+        "angle": "speed",
+        "what_they_do": "Fills forms and CRM fields from speech for any industry.",
+        "how_they_differentiate": "Fastest capture: results appear while the rep is still talking.",
+        "pricing": "$25 / user / month",
+        "traction": "Seed round reported last quarter",
+        "strengths": [
+          "Real-time results",
+          "Polished mobile app"
+        ],
+        "weaknesses": [
+          "English only",
+          "No offline mode"
+        ],
+        "sources": [
+          "https://example.com/voiceforms/news"
+        ]
+      }
+    ],
+    "white_space": [
+      {
+        "gap": "Offline-first capture for rural field teams",
+        "evidence": "Neither competitor supports it (their docs require a connection)"
+      }
+    ],
+    "traction": [
+      {
+        "point": "400 paying teams",
+        "sources": [
+          "https://example.com/news/seed"
+        ]
+      }
+    ]
+  },
+  "growth": [
+    {
+      "tactic": "Founder-led demos to 50 sales managers",
+      "detail": "The first 50 customers came from personal outreach.",
+      "sources": [
+        "https://example.com/blog/first-50"
+      ]
+    },
+    {
+      "tactic": "Short demo videos on LinkedIn",
+      "detail": "Rep-in-the-field clips showing the 30-second flow.",
+      "sources": [
+        "https://example.com/linkedin"
+      ]
+    }
+  ],
+  "strengths": [
+    "Clear buyer and clear pain",
+    "High rep adoption because it removes a chore",
+    "Local-language moat"
+  ],
+  "drawbacks": [
+    {
+      "point": "Depends on third-party speech and LLM prices",
+      "detail": "A price rise or quality drop hits margin directly."
+    },
+    {
+      "point": "Large CRMs can copy the core feature",
+      "detail": "Distribution advantage favours incumbents if they prioritise it."
+    }
+  ],
+  "tech": [
+    {
+      "layer": "Mobile app",
+      "choice": "React Native with local storage for offline",
+      "confidence": "typical",
+      "evidence": [],
+      "note": "Typical approach for offline-first field apps"
+    },
+    {
+      "layer": "Backend",
+      "choice": "Python API on managed cloud",
+      "confidence": "confirmed",
+      "evidence": [
+        "https://example.com/careers/backend-engineer"
+      ],
+      "note": "From a public job post"
+    },
+    {
+      "layer": "AI",
+      "choice": "Speech-to-text + LLM structured extraction",
+      "confidence": "typical",
+      "evidence": [],
+      "note": "Standard pipeline for voice-to-form products"
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2024",
+      "event": "Founded",
+      "sources": [
+        "https://example.com/about"
+      ]
+    },
+    {
+      "date": "2025-06",
+      "event": "Public launch",
+      "sources": [
+        "https://example.com/blog/launch"
+      ]
+    },
+    {
+      "date": "2026-03",
+      "event": "Seed round announced",
+      "sources": [
+        "https://example.com/news/seed"
+      ]
+    }
+  ],
+  "opportunities": [
+    {
+      "gap": "Field teams in other trades (insurance agents, clinic reps)",
+      "how_to_win": "Same pipeline, different schema and language packs"
+    }
+  ]
+}

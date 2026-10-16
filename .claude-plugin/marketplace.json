@@ -1,0 +1,14 @@
+{
+  "name": "rub",
+  "description": "RUB: Research, Understand, Build. Open-source startup research and build-planning toolkit.",
+  "owner": {
+    "name": "Chadaram Karunakar"
+  },
+  "plugins": [
+    {
+      "name": "rub",
+      "source": "./",
+      "description": "Research a startup, understand its business and tech, then get a learn plan and a build plan with vibe-coding prompts."
+    }
+  ]
+}

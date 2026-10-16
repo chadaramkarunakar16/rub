@@ -1,0 +1,10 @@
+# your research stays on your machine
+studies/
+blueprints/
+content/
+INDEX.md
+DASHBOARD.html
+__pycache__/
+.pytest_cache/
+*.pyc
+.env
